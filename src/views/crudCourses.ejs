@@ -1,0 +1,69 @@
+<% include partials/_header %>
+
+    <div class="container">
+        <!--div class="row"-->
+           <!--formulario-->
+           <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="title" placeholder="inserte un titulo" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                    <textarea name="description" cols="88" class="form-control" placeholder="Inserte una descripcion"></textarea>
+                            </div>
+                            <div class="form-group">
+                                    <textarea name="price" cols="88" class="form-control" placeholder="Inserte un precio"></textarea>
+                            </div>
+                            <div class="form-group">
+                                    <textarea name="image" cols="88" class="form-control" placeholder="Inserte una imagen"></textarea>
+                            </div>
+                            <div class="form-group">
+                                    <textarea name="academy" cols="88" class="form-control" placeholder="Inserte una academia"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Agregar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+           <!--lista-->
+           <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>N</th>
+                            <th>Titulo</th>
+                            <th>Descripcion</th>
+                            <th>Precio</th>
+                            <th>Imagen</th>
+                            <th>Academia</th>
+                            <th>Operacion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <% for(var i=0; i < courses.length; i++) {%>
+                                <tr>
+                                    <td><%= i + 1%></td>
+                                    <td><%= courses[i].title%></td>
+                                    <td><%= courses[i].description%></td>
+                                    <td><%= courses[i].price%></td>
+                                    <td><%= courses[i].image%></td>
+                                    <td><%= courses[i].academy%></td>
+                                    <td>
+                                        <a href="/active/<%= courses[i]._id%>" class="btn <%= courses[i].status ? 'btn-success' : 'btn-dark'%>">Estado</a>
+                                        <a href="/delete/<%= courses[i]._id%>" class="btn btn-danger">Eliminar</a>
+                                        <a href="/edit/<%= courses[i]._id%>" class="btn btn-info">Editar</a>
+                                        
+                                    </td>
+                                </tr>
+                            <% }%>
+                    </tbody>
+                </table>
+            </div>
+        <!--/div-->
+    </div>
+
+    <% include partials/_footer %>
