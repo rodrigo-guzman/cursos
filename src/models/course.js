@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const CourseSchema = new Schema({
+    id: Number,
     title: String,
     description: String,
     price: Number,
@@ -10,7 +11,8 @@ const CourseSchema = new Schema({
     status: {
         type: Boolean,
         default: false
-    }
+    },
+    created_at: Date
 })
 
 module.exports = mongoose.model('courses',CourseSchema)
